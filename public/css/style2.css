@@ -1,7 +1,7 @@
 body {
-    font-size: 16px;
-    font-family: Verdana, sans-serif;
-}
+     font-size: 16px;
+     font-family: Verdana, sans-serif;
+ }
 
 .container {
     width: 400px;
@@ -20,4 +20,11 @@ ul > li {
 
 input[type="text"] {
     padding: 3px;
+}
+
+
+span.delete {
+    font-size: 12px;
+    cursor: pointer;
+    color: #08c;
 }

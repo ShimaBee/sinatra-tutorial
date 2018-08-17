@@ -8,6 +8,7 @@ ActiveRecord::Base.establish_connection(
 )
 
 class Comment < ActiveRecord::Base
+  validates :body, presence: true
 end
 
 get '/' do
@@ -23,6 +24,9 @@ post '/create' do
 end
 
 
+post '/destroy' do
+    Comment.find(params[:id]).destroy
+end
 
 
 
