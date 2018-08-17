@@ -1,12 +1,26 @@
 require 'sinatra'
 require 'sinatra/reloader'
+require 'active_record'
 
+ActiveRecord::Base.establish_connection(
+    adapter: 'sqlite3',
+    database: './bbs.db'
+)
+
+class Comment < ActiveRecord::Base
+end
 
 get '/' do
+  @title = "My BBS"
+  @comments = Comment.all
   erb :index
 end
 
 
+post '/create' do
+  Comment.create(body:params[:body])
+  redirect to('/')
+end
 
 
 
@@ -48,11 +62,27 @@ end
 
 
 # 受け取る値をoptional(入れても入れなくてもいい)にする
-get '/hello/:farstName/?:lastName?' do |f,l|
-  "hello,#{f} #{l}"
-end
+# get '/hello/:farstName/?:lastName?' do |f,l|
+#   "hello,#{f} #{l}"
+# end
 
 
+# ワイルドカード
+# get '/hello/*/*' do |f,l|
+#   "hello,#{f} #{l}"
+# end
+
+
+# ブロックの引数を使わない方法
+# get '/hello/*/*' do
+#   "hello,#{params[:splat][0]} #{params[:splat][1]}"
+# end
+
+
+# 正規表現を使う
+# get %r{/users/([0-9])*} do
+#   "users ID = #{params[:captures][0]}"
+# end
 
 
 
