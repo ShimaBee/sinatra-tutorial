@@ -21,11 +21,12 @@ h1 {
     border-bottom: 1px solid #ddd;
     padding-bottom: 10px;
     font-weight: bold;
+    color:blue;
 }
 
 
 ul > li {
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 
 input[type="text"] {
